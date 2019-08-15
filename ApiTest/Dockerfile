@@ -2,16 +2,14 @@ FROM mcr.microsoft.com/dotnet/core/sdk:2.2
 WORKDIR /app
 
 # copy csproj and restore as distinct layers
-COPY apitest/*.csproj ./apitest/
-COPY utils/*.csproj ./utils/
-WORKDIR /app/apitest
+COPY ApiTest/*.csproj ./ApiTest/
+WORKDIR /app/ApiTest
 RUN dotnet restore
 
 # copy and publish app and libraries
 WORKDIR /app/
-COPY apitest/. ./apitest/
-COPY utils/. ./utils/
-WORKDIR /app/apitest
+COPY ApiTest/. ./ApiTest/
+WORKDIR /app/ApiTest
 RUN dotnet publish -c Release -o out
 
 
@@ -25,4 +23,4 @@ ENTRYPOINT ["dotnet", "test", "--logger:trx"]
 FROM mcr.microsoft.com/dotnet/core/runtime:2.2 AS runtime
 WORKDIR /app
 COPY --from=build /app/dotnetapp/out ./
-ENTRYPOINT ["dotnet", "apitest.dll"]
+ENTRYPOINT ["dotnet", "ApiTest.dll"]
