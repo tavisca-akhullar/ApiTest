@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  apitest:
+    image: apitest
+    build:
+      context: ./ApiTest
+      dockerfile: Dockerfile
