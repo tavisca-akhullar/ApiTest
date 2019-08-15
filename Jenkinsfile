@@ -14,7 +14,7 @@ pipeline
 		
             steps {
 			
-                sh 'dotnet build ApiTest.sln -p:configuration=release -v:n'
+                powershell 'dotnet build ApiTest.sln -p:configuration=release -v:n'
     
 				            echo "Building......."
  
@@ -27,7 +27,7 @@ pipeline
 			
             steps {
 
-				                sh 'dotnet test'
+				                powershell 'dotnet test'
    
 				             	echo "Testing.........."
   
@@ -40,7 +40,7 @@ pipeline
 				
             steps {
 					
-                sh 'dotnet publish'
+                powershell 'dotnet publish'
 					
                 echo "Testing.........."
 
