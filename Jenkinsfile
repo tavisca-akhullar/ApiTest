@@ -48,7 +48,22 @@ pipeline
 
         				}
 			
+
+			 stage('Deploy')
+ 					{
+				
+            steps {
+					
+                powershell 'dotnet ApiTest/bin/Release/netcoreapp2.2/ApiTest.dll'
+					
+                echo "Deploying.........."
+
+						  }
+
+        				}
+			
     }
+
 
  			   post
 				{
