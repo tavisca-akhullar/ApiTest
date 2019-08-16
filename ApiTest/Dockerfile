@@ -1,26 +1,7 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2
-WORKDIR /app
+FROM microsoft/dotnet:2.2-aspnetcore-runtime AS base
 
-# copy csproj and restore as distinct layers
-COPY ApiTest/*.csproj ./ApiTest/
-WORKDIR /app/ApiTest
-RUN dotnet restore
+WORKDIR app/
 
-# copy and publish app and libraries
-WORKDIR /app/
-COPY ApiTest/. ./ApiTest/
-WORKDIR /app/ApiTest
-RUN dotnet publish -c Release -o out
+COPY ApiTest/bin/Release/netcoreapp2.2/ .
 
-
-# test application -- see: dotnet-docker-unit-testing.md
-FROM build AS testrunner
-WORKDIR /app/tests
-COPY tests/. .
-ENTRYPOINT ["dotnet", "test", "--logger:trx"]
-
-
-FROM mcr.microsoft.com/dotnet/core/runtime:2.2 AS runtime
-WORKDIR /app
-COPY --from=build /app/dotnetapp/out ./
 ENTRYPOINT ["dotnet", "ApiTest.dll"]

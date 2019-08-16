@@ -3,7 +3,6 @@ C:\Users\akhullar\source\repos\ApiTest\ApiTest\bin\Release\netcoreapp2.2\ApiTest
 C:\Users\akhullar\source\repos\ApiTest\ApiTest\bin\Release\netcoreapp2.2\ApiTest.runtimeconfig.dev.json
 C:\Users\akhullar\source\repos\ApiTest\ApiTest\bin\Release\netcoreapp2.2\ApiTest.dll
 C:\Users\akhullar\source\repos\ApiTest\ApiTest\bin\Release\netcoreapp2.2\ApiTest.pdb
-C:\Users\akhullar\source\repos\ApiTest\ApiTest\obj\Release\netcoreapp2.2\ApiTest.csprojResolveAssemblyReference.cache
 C:\Users\akhullar\source\repos\ApiTest\ApiTest\obj\Release\netcoreapp2.2\ApiTest.csproj.CoreCompileInputs.cache
 C:\Users\akhullar\source\repos\ApiTest\ApiTest\obj\Release\netcoreapp2.2\ApiTest.RazorAssemblyInfo.cache
 C:\Users\akhullar\source\repos\ApiTest\ApiTest\obj\Release\netcoreapp2.2\ApiTest.RazorAssemblyInfo.cs
@@ -12,3 +11,4 @@ C:\Users\akhullar\source\repos\ApiTest\ApiTest\obj\Release\netcoreapp2.2\ApiTest
 C:\Users\akhullar\source\repos\ApiTest\ApiTest\obj\Release\netcoreapp2.2\ApiTest.RazorTargetAssemblyInfo.cache
 C:\Users\akhullar\source\repos\ApiTest\ApiTest\obj\Release\netcoreapp2.2\ApiTest.dll
 C:\Users\akhullar\source\repos\ApiTest\ApiTest\obj\Release\netcoreapp2.2\ApiTest.pdb
+C:\Users\akhullar\source\repos\ApiTest\ApiTest\obj\release\netcoreapp2.2\ApiTest.csprojAssemblyReference.cache
