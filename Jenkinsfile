@@ -27,6 +27,16 @@ pipeline {
 			string(	name: 'Contiainer_Port',
 					defaultValue: "6969", 
 					description: '')
+
+			
+			string(	name: 'User_Id',
+					defaultValue: "1234", 
+					description: '')
+			
+			
+			string(	name: 'Password',
+					defaultValue: "1234", 
+					description: '')
 		    
     }
 	
@@ -56,6 +66,8 @@ pipeline {
             steps {
 		powershell 'docker build -t ${Container_Name}:${Build_Version} Release'
 		powershell'docker run -p ${Container_Port}:${Application_Port} ${Container_Name}'
+		powershell 'docker login -u ${User_Id} -p ${Password}'
+		powershell 'docker push ${User_Id}/${Container_Name}:${Build_Version}'
 		powershell 'docker container rm -f ${Container_Name}:${Build_Version}'
         }	
     }
