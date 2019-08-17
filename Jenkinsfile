@@ -2,7 +2,7 @@ pipeline {
     agent any
 	parameters {		
 			string(	name: 'Git_Url',
-					defaultValue: "https://github.com/tavisca-akhullar/DemoApi.git",
+					defaultValue: "https://github.com/tavisca-akhullar/ApiTest.git",
 					description: '')
 
 			string(	name: 'Solution_Name',
@@ -10,6 +10,22 @@ pipeline {
 					description: '')
 
 			string(	name: 'Test_Project_Path',
+					description: '')
+
+	`		string(	name: 'Container_Name',
+					defaultValue: "myapitest", 
+					description: '')
+			
+			string(	name: 'Build_Version',
+					defaultValue: "1.0", 
+					description: '')
+
+			string(	name: 'Application_Port',
+					defaultValue: "8999", 
+					description: '')
+
+			string(	name: 'Contiainer_Port',
+					defaultValue: "6969", 
 					description: '')
 		    
     }
@@ -38,11 +54,15 @@ pipeline {
 
 		 stage('Deploy') { 
             steps {
-		powershell 'docker build -t myapitest Release'
-		powershell'docker run -p 1212:8999 myapitest'
-		powershell 'docker image rm -f myapitest:latest'
-        }
-	
-		
+		powershell 'docker build -t ${Container_Name}:${Build_Version} Release'
+		powershell'docker run -p ${Container_Port}:${Application_Port} ${Container_Name}'
+		powershell 'docker container rm -f ${Container_Name}:${Build_Version}'
+        }	
     }
-}
+
+   post{
+	  always{
+	      deleteDir()
+	  }
+      }
+ }
