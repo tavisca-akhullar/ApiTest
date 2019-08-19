@@ -51,7 +51,7 @@ pipeline {
 		    powershell 'dotnet restore ${Solution_Name} --source https://api.nuget.org/v3/index.json'
 		    powershell 'dotnet build  ${Solution_Name} -p:Configuration=release -v:n'
                     powershell 'dotnet test'
-		    poweshell(script: 'dotnet c:/sonar/SonarScanner.MSBuild.dll end /d:sonar.login="46256c0cd50596270a8806d20a71b5ddda0c01c6"')
+		    powershell(script: 'dotnet c:/sonar/SonarScanner.MSBuild.dll end /d:sonar.login="46256c0cd50596270a8806d20a71b5ddda0c01c6"')
             }
         }
 	
