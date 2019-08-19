@@ -65,21 +65,6 @@ pipeline {
 		powershell 'cp ApiTest\obj\Release\netcoreapp2.2\* Release\publish' 
             }
         }
-	    stage('sonar') {
-		    steps {
-			     
-
-                       powershell "dotnet ${SONAR_MS_TOOL}  begin /k:ApiTest /d:sonar.host.url=${SONAR_URL}  /d:sonar.login=${SONAR_TOKEN}"
-                       powershell "dotnet  build"
-                        powershell "dotnet ${SONAR_MS_TOOL} end  /d:sonar.login={SONAR_TOKEN}"
-                  
-
-
-
-
-		    }
-	    }
-	    
 
 		 stage('Deploy') { 
             steps {
