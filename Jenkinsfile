@@ -48,7 +48,7 @@ pipeline {
         stage('Build') {
             steps {
 		    
-		    powersell(script: 'dotnet c:/sonar/SonarScanner.MSBuild.dll end /d:sonar.login="9f2d4217066ab9b5611abbd8afb33be3b0cee32b"')
+		    powershell(script: 'dotnet c:/sonar/SonarScanner.MSBuild.dll end /d:sonar.login="9f2d4217066ab9b5611abbd8afb33be3b0cee32b"')
 		    powershell 'dotnet restore ${Solution_Name} --source https://api.nuget.org/v3/index.json'
 		    powershell 'dotnet build  ${Solution_Name} -p:Configuration=release -v:n'
                     powershell 'dotnet test'
