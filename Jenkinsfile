@@ -68,12 +68,12 @@ pipeline {
 
 		 stage('Deploy') { 
             steps {
-		powershell 'docker build -t ${Container_Name}:${Build_Version} Release'
-		powershell'docker run -p ${Container_Port}:${Application_Port} ${Container_Name}'
-		    docker tag ${Container_Name} ${User_Id}/${Repository}:${Build_Version}'
-		powershell 'docker login -u ${User_Id} -p ${Password}'
-		powershell 'docker push ${User_Id}/${Container_Name}:${Build_Version}'
-		powershell 'docker image rm -f ${Container_Name}:${Build_Version}'
+		powershell "docker build -t ${Container_Name}:${Build_Version} Release"
+		powershell"docker run -p ${Container_Port}:${Application_Port} ${Container_Name}"
+		  powershell  "docker tag ${Container_Name} ${User_Id}/${Repository}:${Build_Version}"
+		powershell "docker login -u ${User_Id} -p ${Password}"
+		powershell "docker push ${User_Id}/${Container_Name}:${Build_Version}"
+		powershell "docker image rm -f ${Container_Name}:${Build_Version}"
         }	
     }
 
