@@ -76,6 +76,7 @@ pipeline {
 		powershell "docker image rm -f ${Container_Name}:${Build_Version}"
         }	
     }
+    }
 
    post{
 	  always{
