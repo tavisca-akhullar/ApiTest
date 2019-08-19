@@ -47,12 +47,11 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-		    
-		    powershell(script: 'dotnet c:/sonar/SonarScanner.MSBuild.dll end /d:sonar.login="9f2d4217066ab9b5611abbd8afb33be3b0cee32b"')
+		    powershell(script: 'dotnet c:/sonar/SonarScanner.MSBuild.dll begin /k:"ApiTestDemo" /d:sonar.host.url="http://localhost:9000" /d:sonar.login="46256c0cd50596270a8806d20a71b5ddda0c01c6"')
 		    powershell 'dotnet restore ${Solution_Name} --source https://api.nuget.org/v3/index.json'
 		    powershell 'dotnet build  ${Solution_Name} -p:Configuration=release -v:n'
                     powershell 'dotnet test'
-		    poweshell(script: 'dotnet c:/sonar/SonarScanner.MSBuild.dll end /d:sonar.login="9f2d4217066ab9b5611abbd8afb33be3b0cee32b"')
+		    poweshell(script: 'dotnet c:/sonar/SonarScanner.MSBuild.dll end /d:sonar.login="46256c0cd50596270a8806d20a71b5ddda0c01c6"')
             }
         }
 	
