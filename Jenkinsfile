@@ -47,8 +47,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-		    bat "dotnet restore ${Solution_Name} --source https://api.nuget.org/v3/index.json"
-		    bat "dotnet build  ${Solution_Name} -p:Configuration=release -v:n"
+		    sh "dotnet restore ${Solution_Name} --source https://api.nuget.org/v3/index.json"
+		    sh "dotnet build  ${Solution_Name} -p:Configuration=release -v:n"
 				
             }
         }
