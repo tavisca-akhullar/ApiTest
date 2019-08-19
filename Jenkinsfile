@@ -62,7 +62,7 @@ pipeline {
 	 stage('Publish') { 
             steps {
                 powershell 'dotnet publish'
-		powershell 'cp ApiTest\obj\Release\netcoreapp2.2\* Release\publish' 
+		
             }
         }
 
