@@ -41,13 +41,13 @@ pipeline {
 		    powershell 'dotnet build  ${Solution_Name} -p:Configuration=release -v:n'
                     powershell 'dotnet test'
 		    powershell('dotnet ${Sonar_MS_Tool} end /d:sonar.login="46256c0cd50596270a8806d20a71b5ddda0c01c6"')
+		    powershell 'dotnet publish'
             }
         }
 	
-	 stage('Publish') { 
+	 stage('Push to docker') { 
 	 docker.withRegistry('','docker_credentials'){
             steps {
-                powershell 'dotnet publish'
 		powershell "docker build -t ${Container_Name}:${Build_Version} Release"
 		powershell "docker tag ${Container_Name} ${User_Id}/${Docker_Registry}:${Build_Version}"
 		powershell "docker push ${User_Id}/${Container_Name}:${Build_Version}"
