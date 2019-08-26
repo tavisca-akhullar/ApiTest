@@ -1,10 +1,7 @@
 pipeline {
     agent any
 	parameters {		
-			string(	name: 'Git_Url',
-					defaultValue: "https://github.com/tavisca-akhullar/ApiTest.git",
-					description: '')
-
+			
 			string(	name: 'Solution_Name',
 					defaultValue: "ApiTest.sln", 
 					description: '')
